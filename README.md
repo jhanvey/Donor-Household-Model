@@ -13,10 +13,10 @@ All proprietary schema names, internal table names, and organization-specific li
 - All other scripts were written by **Jesse Hanvey**.
 
 ## Implementation Notes
-- All created tables use descriptive names (no `AN_` prefix and no `_MV` suffix) and are assumed to live in the `dw` schema in this redacted version.
+- All created tables use descriptive names and are assumed to live in the `dw` schema in this redacted version.
 - All source/operational tables are assumed to live in a generic `src` schema.
 - Filters referencing the original organization name were normalized to `'ORG'` to avoid exposing institutional identifiers.
-- The lifecycle status logic (`LIFECYCLE_STATUS.sql`) is intentionally repetitive to reflect its original implementation in plain SQL (for compatibility with Power BI). It could be refactored in PL/SQL to reduce repetition via loops, but is retained here to closely match the original design and behavior.
+- The lifecycle status logic (`LIFECYCLE_STATUS.sql`) is intentionally repetitive to reflect its original implementation in plain SQL (for compatibility with Power BI). It could be refactored in PL/SQL to reduce repetition via loops.
 
 ## Files
 - `PERSON_SUMMARY.sql` — Person-level rollup used to generate household IDs and enrich constituent attributes.
@@ -34,8 +34,8 @@ Historically, analytics were person-centric and scattered across many reports. T
 
 ### How households are formed
 - **Stable Household IDs:** Spouses are combined into a single household identifier to ensure that a married couple’s giving is analyzed together rather than as separate donors. This prevents double‑counting and produces a truer view of acquisition, retention, and gift totals.
-- **DAF & Company Reassignment:** When gifts are routed through Donor‑Advised Funds or companies, they are **analytically reassigned** back to the donor behind the gift. This aligns the analytics view with donor relationships (while accounting keeps its own ledgering). The result is a clearer picture of who is actually giving and responding to appeals.
-- **First Gift Identification:** The first recorded gift per household is flagged. This enables clean cohorting (e.g., “FY2024 new donors”) and downstream retention analysis.
+- **DAF & Company Reassignment:** When gifts are routed through Donor‑Advised Funds or companies, they are **reassigned** back to the donor behind the gift. This aligns the analytics view with donor relationships (while accounting keeps its own ledgering). The result is a clearer picture of who is actually giving and responding to appeals.
+- **First Gift Identification:** The first recorded gift per household is flagged. This enables clean cohorting (e.g., “FY2024 Q1 new donors”), first gift analysis, and downstream retention analysis.
 - **Lifecycle Classification:** Each household is placed into a fiscal‑year lifecycle bucket (e.g., *New Donor*, *Key Multi‑Year*, *Recently Lapsed*, *Long Lapsed*). Lifecycle states are computed at the start of the fiscal year to support year‑over‑year tracking and movement analysis.
 - **Portfolio Awareness:** Households are linked to their assigned giving representatives, which allows portfolio‑level analysis of upgrade, lapse, and reactivation patterns for higher‑value segments.
 
@@ -55,12 +55,12 @@ Historically, analytics were person-centric and scattered across many reports. T
 - **Lifecycle Movement:** Monitor transitions between *New*, *Key Multi‑Year*, *Recently Lapsed*, and *Lapsed* across fiscal years.
 - **Appeal & Channel Performance:** Evaluate gift source, designation, and motivation in the context of household history rather than isolated transactions.
 - **Major & Mid‑level Programs:** Identify and follow households appropriate for portfolio assignment, then measure outcomes by representative.
-- **Data Reduction in BI Models:** Replace dozens of M/SQL steps in reports with a single warehouse table import per subject area.
+- **Data Reduction in BI Models:** Replace dozens of SQL and data manipulation steps in reports with a single warehouse table import per subject area.
 
 ---
 
 ## Intended Use
-This redacted code is provided **for demonstration purposes only** to illustrate modeling decisions, SQL architecture, and analytics patterns. It is **not** a drop‑in solution and omits environment‑specific dependencies, indexes, grants, and orchestration steps.
+This redacted code is provided **for demonstration purposes only** to illustrate modeling decisions, SQL architecture, and analytics patterns. It is **not** a drop‑in solution and omits environment‑specific dependencies, indexes, and orchestration steps.
 
 ## License
 Copyright © Jesse Hanvey.
