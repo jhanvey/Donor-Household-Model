@@ -1,6 +1,6 @@
-# Redacted Giving Analytics (Data Warehouse Extract)
+# Redacted Donor Household Model (Originally Built for MBI's Data Warehouse)
 
-This repository contains a **redacted** subset of SQL scripts that mirror the structure of donor and gift analytics tables I created for the Moody Bible Institute data warehouse.
+This repository contains a **redacted** subset of SQL scripts that mirror the structure of donor and gift analytics tables I created for the Moody Bible Institute's (MBI) data warehouse.
 All proprietary schema names, internal table names, and organization-specific literals have been replaced with generic placeholders. The business logic is preserved where possible to demonstrate approach and technique, while protecting confidential implementation details.
 
 ## What’s Included
