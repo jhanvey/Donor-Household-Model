@@ -16,7 +16,7 @@ All proprietary schema names, internal table names, and organization-specific li
 - All created tables use descriptive names and are assumed to live in the `dw` schema in this redacted version.
 - All source/operational tables are assumed to live in a generic `src` schema.
 - Filters referencing the original organization name were normalized to `'ORG'` to avoid exposing institutional identifiers.
-- The lifecycle status logic (`LIFECYCLE_STATUS.sql`) is intentionally repetitive to reflect its original implementation in plain SQL (for compatibility with Power BI). It could be refactored in PL/SQL to reduce repetition via loops.
+- The lifecycle status logic (`LIFECYCLE_STATUS.sql`) is written in plain SQL (originally, this SQL was used within Power BI). It could be refactored in PL/SQL to reduce repetition via loops.
 
 ## Files
 - `PERSON_SUMMARY.sql` — Person-level rollup used to generate household IDs and enrich constituent attributes.
