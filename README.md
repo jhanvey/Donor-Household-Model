@@ -1,6 +1,6 @@
-# Redacted Donor Household Model (Originally Built for MBI's Data Warehouse)
+# Redacted Donor Household Model
 
-This repository contains a **redacted** subset of SQL scripts that mirror the structure of donor and gift analytics tables I created for the Moody Bible Institute's (MBI) data warehouse.
+This repository contains a **redacted** subset of SQL scripts that mirror the structure of donor and gift analytics tables I created for the Moody Bible Institute's data warehouse.
 All proprietary schema names, internal table names, and organization-specific literals have been replaced with generic placeholders. The business logic is preserved where possible to demonstrate approach and technique, while protecting confidential implementation details.
 
 ## What’s Included
