@@ -9,8 +9,8 @@ All proprietary schema names, internal table names, and organization-specific li
 - Redacted table names: created tables assume a `dw` schema; source/operational tables assume a `src` schema.
 
 ## Notes on Authorship
-- The person summary logic was primarily developed by **Adam Reece**; I made subsequent edits and integrated it with the broader analytics layer.
-- All other scripts were written by **Jesse Hanvey**.
+- The person summary logic was primarily developed by our Data Governance Manager; I made subsequent edits and integrated it with the broader analytics layer.
+- All other scripts were written by me (Jesse Hanvey).
 
 ## Implementation Notes
 - All created tables use descriptive names and are assumed to live in the `dw` schema in this redacted version.
